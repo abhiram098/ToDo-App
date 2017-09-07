@@ -7,8 +7,37 @@ describe('todo-app App', () => {
     page = new TodoAppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display Heading', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getHeadingText()).toEqual('ToDo List');
   });
+
+  it('should verify the count', () => {
+    page.navigateTo();
+    expect(page.getCountText()).toEqual('3');
+  });
+
+  it('should add an item to the list and verify the count', () =>{
+    page.navigateTo();
+    page.newTodo().then( function (done) {
+      page.clickSubmit();
+    });
+    expect(page.getCountText()).toEqual('4');
+  });
+
+  it('should remove an item and verify the count', () =>{
+    page.navigateTo();
+    page.clickCompleted();
+    page.confirmAlert();
+    expect(page.getCountText()).toEqual('2');
+  });
+
+  it('should verify that the AddToDo box is empty after submitting', () =>{
+    page.navigateTo();
+    page.newTodo().then( function(done){
+      page.clickSubmit();
+    });
+    expect(page.checkInputBox()).toBeUndefined();
+  });
+
 });
