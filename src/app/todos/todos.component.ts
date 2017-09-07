@@ -24,10 +24,16 @@ export class TodosComponent implements OnInit {
   }
 
   addTodo() {
-    this.todos.push({
-      text: this.todoText,
-    });
-    this.count++;
+    var newText = this.todoText;
+    if (newText.length < 1)
+      alert('Please enter a task to submit');
+    else {
+      this.todos.push({
+        text: newText,
+      });
+      this.count++;
+      this.todoText = '';
+    }
   }
 
   clearInput() {
@@ -35,8 +41,9 @@ export class TodosComponent implements OnInit {
 
   }
 
-  alertTodo() {
-    alert('Are you sure?');
+  alertTodo(todo) {
+    if(confirm('Are you sure you are done with the task?')== true)
+      this.removeTodo(todo);
   }
 
   removeTodo(todo) {

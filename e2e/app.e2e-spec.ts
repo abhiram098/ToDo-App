@@ -40,4 +40,19 @@ describe('todo-app App', () => {
     expect(page.checkInputBox()).toBeUndefined();
   });
 
+  it('should make sure that we can\'t submit a empty String', () => {
+    page.navigateTo();
+    var count = page.getCountText();
+    page.clickSubmit();
+    page.confirmAlert();
+    expect(count==page.getCountText());
+  });
+
+  it('should test that the task is not deleted on hitting cancel at the confirm box',() =>{
+    page.navigateTo();
+    var count = page.getCountText();
+    page.clickCompleted();
+    page.rejectAlert();
+    expect(count==page.getCountText());
+  })
 });

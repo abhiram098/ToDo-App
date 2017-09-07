@@ -26,6 +26,11 @@ export class TodoAppPage {
     browser.wait(E.alertIsPresent(), 5000 , 'Alert not displayed');
     browser.switchTo().alert().accept();
   }
+  rejectAlert() {
+    var E = protractor.ExpectedConditions;
+    browser.wait(E.alertIsPresent(), 5000 , 'Alert not displayed');
+    browser.switchTo().alert().dismiss();
+  }
   checkInputBox() {
     element(by.id('newTodo')).getText();
   }
