@@ -1,5 +1,4 @@
 import { browser, by, element } from 'protractor';
-import {protractor} from 'protractor/built/ptor';
 
 export class TodoAppPage {
   navigateTo() {
@@ -22,13 +21,9 @@ export class TodoAppPage {
     element(by.xpath('//ul/li[2]/button')).click();
   }
   confirmAlert() {
-    var E = protractor.ExpectedConditions;
-    browser.wait(E.alertIsPresent(), 5000 , 'Alert not displayed');
     browser.switchTo().alert().accept();
   }
   rejectAlert() {
-    var E = protractor.ExpectedConditions;
-    browser.wait(E.alertIsPresent(), 5000 , 'Alert not displayed');
     browser.switchTo().alert().dismiss();
   }
   checkInputBox() {

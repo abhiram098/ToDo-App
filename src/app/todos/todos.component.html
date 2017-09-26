@@ -2,9 +2,9 @@
 <input id="newTodo" type="text" [(ngModel)]="todoText" value={{todoText}}>
 <button id="submit" (click)="addTodo(); clearInput()">Submit</button>
 <div><h5>Total number of Tasks left: <span id="count">{{count}}</span></h5></div>
-<ul style="list-style: none">
+<ul style="list-style: none" class = "todoList">
   <li *ngFor="let todo of todos" class="todoInTodos">
-    <button type="button" (click)="alertTodo(todo)"  >completed</button>
+    <button type="button" (click)="alertTodo(todo)" class="completed" >completed</button>
     {{todo.text}}
   </li>
 </ul>
